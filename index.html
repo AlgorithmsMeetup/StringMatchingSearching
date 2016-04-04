@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="./css/styles.css">
+  </head>
+  <body>
+    <div id="edit_distance_input">
+  		String A: <input id="ed_string_a" type="text" name="string A"><br>
+  		String B: <input id="ed_string_b" type="text" name="string B"><br>
+  		<button onclick="getEditDistance()">Get Edit Distance</button>
+    </div>
+    <br>
+    <div>
+    	Output:<input id="edit_distance_output" type="text" name="Edit Distance Output">
+    </div>
+    <br>
+    <br>
+    <div id="fuzzy_search_input">
+  			String A: <input id="fuzzy_search_text" type="text" name="String"><br>
+  			String B: <input id="fuzzy_search_query" type="text" name="Query"><br>
+  			<button onclick="doFuzzyStringMatch()">Do Fuzzy String Match</button>
+    </div>
+    <br>
+    <div>
+    	Output:<input id="fuzzy_search_output" type="text" name="Fuzzy Search Output">
+    </div>
+    <script src="./lib/jquery.js"></script>
+    <script src="./src/editDistance.js"></script>
+    <script src="./src/fuzzyStringMatch.js"></script>
+    <script>
+    	function getEditDistance() {
+    		var stringA = $("#ed_string_a").val();
+  			var stringB = $("#ed_string_b").val();
+  			console.log('Computing Edit Distance for Strings', stringA, stringB);
+  			var calculateDistance = editDistance(stringA, stringB);
+  			console.log('Edit Distance', calculateDistance);
+  			$("#fuzzy_search_output").val(calculateDistance);
+    	}
+
+    	function doFuzzyStringMatch() {
+    		var fuzzyText = $("#fuzzy_search_text").val();
+  			var fuzzyQuery = $("#fuzzy_search_query").val();
+  			console.log('Doing Fuzzy String Match for query', fuzzyQuery, 'in Text', fuzzyText);
+  			var fuzzyResult = fuzzyStringMatch(fuzzyText, fuzzyQuery);
+  			console.log('Fuzzy String Match Result', fuzzyResult);
+  			$("#fuzzy_search_output").val(fuzzyResult);
+    	}
+    </script>
+  </body>
+</html>
