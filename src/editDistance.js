@@ -56,4 +56,3 @@ var editDistance = function(str1, str2) {
 
   return prevRow[len2];
 };
-};
